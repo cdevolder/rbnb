@@ -10,10 +10,80 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127142649) do
+ActiveRecord::Schema.define(version: 20171127170728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "developpeurs", force: :cascade do |t|
+    t.text "description"
+    t.string "available"
+    t.bigint "profil_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profil_id"], name: "index_developpeurs_on_profil_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.date "check_in"
+    t.date "check_out"
+    t.string "status"
+    t.bigint "recruteur_id"
+    t.bigint "developpeur_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["developpeur_id"], name: "index_locations_on_developpeur_id"
+    t.index ["recruteur_id"], name: "index_locations_on_recruteur_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profils", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profils_on_user_id"
+  end
+
+  create_table "recruteurs", force: :cascade do |t|
+    t.text "description"
+    t.bigint "profil_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profil_id"], name: "index_recruteurs_on_profil_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "description"
+    t.string "rating"
+    t.bigint "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_reviews_on_location_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.integer "level"
+    t.bigint "developpeur_id"
+    t.bigint "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["developpeur_id"], name: "index_skills_on_developpeur_id"
+    t.index ["language_id"], name: "index_skills_on_language_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,5 +102,12 @@ ActiveRecord::Schema.define(version: 20171127142649) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "developpeurs", "profils"
+  add_foreign_key "locations", "developpeurs"
+  add_foreign_key "locations", "recruteurs"
+  add_foreign_key "profils", "users"
+  add_foreign_key "recruteurs", "profils"
+  add_foreign_key "reviews", "locations"
+  add_foreign_key "skills", "developpeurs"
+  add_foreign_key "skills", "languages"
 end
-
