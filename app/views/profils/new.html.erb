@@ -1,2 +1,8 @@
-<h1>Profils#new</h1>
-<p>Find me in app/views/profils/new.html.erb</p>
+<h2>Complete your profile</h2>
+
+    <%= simple_form_for(@profil) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :city %>
+    <%= f.submit "Save"%>
+<% end %>

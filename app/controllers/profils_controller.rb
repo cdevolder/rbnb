@@ -1,16 +1,40 @@
 class ProfilsController < ApplicationController
   def new
+    @profil = Profil.new
   end
 
   def create
+    @user = current_user
+    @profil = Profil.new(profil_params)
+    @profil.user = @user
+    @profil.save
+    if @profil.save
+        redirect_to profil_path(@profil)
+    else
+      render :new
+    end
+  end
+
+  def show
+    @profil = Profil.find(params[:id])
   end
 
   def edit
+    @profil = Profil.find(current_user.profil.id)
+    @developpeur = Developpeur.find(current_user.profil.developpeur.id)
   end
 
   def update
+    @profil = Profil.find(current_user.profil.id)
+    @profil.update(profil_params)
+
+    redirect_to profil_path(@profil)
   end
 
   def destroy
+  end
+
+  def profil_params
+    params.require(:profil).permit(:name, :address, :city)
   end
 end

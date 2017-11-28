@@ -1,2 +1,8 @@
-<h1>Developpeurs#new</h1>
-<p>Find me in app/views/developpeurs/new.html.erb</p>
+
+<h2>Complete your Developpeur profile</h2>
+
+    <%= simple_form_for [@profil,@developpeur] do |f| %>
+      <%= f.input :description %>
+      <%= f.input :available %>
+      <%= f.submit "Create Developpeur"%>
+<% end %>

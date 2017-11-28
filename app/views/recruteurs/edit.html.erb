@@ -1,2 +1,8 @@
 <h1>Recruteurs#edit</h1>
 <p>Find me in app/views/recruteurs/edit.html.erb</p>
+<h2>Complete your profile</h2>
+
+    <%= simple_form_for [@profil,@recruteur] do |f| %>
+      <%= f.input :description %>
+      <%= f.submit "Edit Recruteur"%>
+<% end %>
