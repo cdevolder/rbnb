@@ -1,7 +1,6 @@
-<h1>Recruteurs#show</h1>
-
 <p>
-<%=@recruteur.description%>
-<%= cl_image_tag (Profil.find(@recruteur.profil_id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
-
+  <%= @recruteur.description %>
 </p>
+<div>
+  <%= cl_image_tag (Profil.find(@recruteur.profil_id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
+</div>
