@@ -16,5 +16,5 @@ Skill.destroy_all
 Language.destroy_all
 
 languages = ['C', 'Java', 'Objective c', 'C++', 'C#', 'PHP', 'Visual Basic', 'Python', 'Transact SQL', 'JavaScript', 'Visual Basic', 'Perl', 'Ruby', 'Matlab', 'Delphi', 'Lips', 'PL/SQL', 'Pascal', 'Assembly', 'F#']
-languages.each { |language| Language.create(name: language)}
+languages.each { |language| Language.create!(name: language)}
 
