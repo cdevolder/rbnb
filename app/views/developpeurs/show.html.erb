@@ -1,8 +1,9 @@
 <h1>Developpeurs#show</h1>
 <p>Find me in app/views/developpeurs/show.html.erb</p>
+
 <p><%=@developpeur.description%>
 <%=@developpeur.available%>
-<%=(Profil.find(@developpeur.profil_id)).address%>
+<%=@developpeur.price%>
 <%= cl_image_tag (Profil.find(@developpeur.profil_id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
 
 
