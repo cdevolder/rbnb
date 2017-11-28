@@ -10,31 +10,73 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <% if current_user.profil != nil && current_user.profil.developpeur == nil %>
+      <%= link_to "Developpeur",new_profil_developpeur_path(Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
+      <% elsif current_user.profil != nil && current_user.profil.developpeur != nil%>
+      <%= link_to "Developpeur", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
+      <% else %>
+      <%= link_to "Developpeur", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+
+
+      <% end %>
+
+      <% if current_user.profil!= nil && current_user.profil.recruteur == nil %>
+      <%= link_to "Recruteur",new_profil_recruteur_path(Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
+      <% elsif current_user.profil!= nil &&  current_user.profil.recruteur != nil%>
+      <%= link_to "Recruteur", edit_profil_recruteur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
+      <% else %>
+      <%= link_to "Recruteur", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+
       <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
+          <% if current_user.profil == nil%>
+            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li>
+                <% if current_user.profil != nil %>
+                <%= link_to profil_path(Profil.find(current_user.profil.id)) do %>
+                  <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <% end %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <% end %>
+              </li>
+            </ul>
+          <% else %>
+          <%= cl_image_tag (Profil.find(current_user.profil.id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li>
+                <% if current_user.profil != nil %>
+                <%= link_to profil_path(Profil.find(current_user.profil.id)) do %>
+                  <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <% end %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <% end %>
+              </li>
+            </ul>
+          <% end %>
         </div>
       </div>
     <% else %>
