@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-    new_profil_path
+    if (current_user.profil != nil)
+      profil_path(Profil.find(current_user.profil.id))
+    else
+      new_profil_path
+    end
   end
+
 end
