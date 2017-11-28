@@ -1,1 +1,17 @@
 // Specific CSS for your home-page
+
+.hp-centered {
+  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(49, 49, 49, 0.57) 50%), image-url('background_hp.jpeg');
+  background-size: cover;
+  height: 70vh;
+  color: #ffffff;
+  margin-bottom: 20px;
+  margin-bottom: 0px;
+}
+
+.hp-services {
+  background-color: #E9EBEE;
+  padding-top: 30px;
+}
+
+
