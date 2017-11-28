@@ -1,6 +1,8 @@
 <%= @profil.name%>
 <%=@profil.address%>
 <%=@profil.city%>
+<%= cl_image_tag @profil.photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
+
 <br>
 
 

@@ -3,6 +3,9 @@
 <p><%=@developpeur.description%>
 <%=@developpeur.available%>
 <%=(Profil.find(@developpeur.profil_id)).address%>
+<%= cl_image_tag (Profil.find(@developpeur.profil_id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
+
+
 </p>
 
 
