@@ -1,6 +1,6 @@
 class SkillsController < ApplicationController
 
-  before_action :set_developpeur, only [:new, :create]
+  before_action :set_developpeur, only: [:new, :create]
 
   def new
     @skills = Skill.new
