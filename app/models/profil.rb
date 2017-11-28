@@ -6,4 +6,9 @@ class Profil < ApplicationRecord
   has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
 
   belongs_to :user
+
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :photo, presence: true
 end
