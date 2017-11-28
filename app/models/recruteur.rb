@@ -2,5 +2,5 @@ class Recruteur < ApplicationRecord
   belongs_to :profil
 
   validates :description, presence: true
-  validates :photo, presence: true
+  mount_uploader :photo, PhotoUploader
 end
