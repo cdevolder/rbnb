@@ -9,4 +9,7 @@ class Profil < ApplicationRecord
 
   has_one :developpeur
   has_one :recruteur
+
+  mount_uploader :photo, PhotoUploader
+
 end
