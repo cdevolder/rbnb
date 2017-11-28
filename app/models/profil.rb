@@ -7,9 +7,15 @@ class Profil < ApplicationRecord
 
   belongs_to :user
 
+
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
+
   has_one :developpeur
   has_one :recruteur
 
   mount_uploader :photo, PhotoUploader
+
 
 end
