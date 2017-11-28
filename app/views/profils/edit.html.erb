@@ -1,2 +1,14 @@
-<h1>Profils#edit</h1>
-<p>Find me in app/views/profils/edit.html.erb</p>
+<h2>Edit your profile</h2>
+
+    <%= simple_form_for(@profil) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :city %>
+    <%= f.submit "Save Change"%>
+<% end %>
+
+<%= link_to"developpeur profile", edit_profil_recruteur_path(@profil, @developpeur)%>
+
+<%= link_to "recruteur profile"%>
+
+

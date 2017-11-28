@@ -1,2 +1,8 @@
 <h1>Developpeurs#show</h1>
 <p>Find me in app/views/developpeurs/show.html.erb</p>
+<p><%=@developpeur.description%>
+<%=@developpeur.available%>
+<%=(Profil.find(@developpeur.profil_id)).address%>
+</p>
+
+
