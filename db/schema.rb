@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127170728) do
+ActiveRecord::Schema.define(version: 20171128120543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20171127170728) do
     t.bigint "profil_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["profil_id"], name: "index_developpeurs_on_profil_id"
   end
 
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20171127170728) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["user_id"], name: "index_profils_on_user_id"
   end
 
@@ -63,6 +65,7 @@ ActiveRecord::Schema.define(version: 20171127170728) do
     t.bigint "profil_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["profil_id"], name: "index_recruteurs_on_profil_id"
   end
 
