@@ -39,6 +39,6 @@ class DeveloppeursController < ApplicationController
   end
 
    def developpeur_params
-    params.require(:developpeur).permit(:description, :available ,:profil_id)
+    params.require(:developpeur).permit(:description, :available ,:profil_id, :price)
   end
 end
