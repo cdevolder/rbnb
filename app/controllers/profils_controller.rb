@@ -21,7 +21,6 @@ class ProfilsController < ApplicationController
 
   def edit
     @profil = Profil.find(current_user.profil.id)
-    @developpeur = Developpeur.find(current_user.profil.developpeur.id)
   end
 
   def update

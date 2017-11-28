@@ -13,7 +13,7 @@ class DeveloppeursController < ApplicationController
 
 
   def index
-    @developpeur = Developpeur.all
+    @developpeurs = Developpeur.all
   end
 
   def edit
