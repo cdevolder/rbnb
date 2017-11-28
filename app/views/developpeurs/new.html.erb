@@ -4,5 +4,6 @@
     <%= simple_form_for [@profil,@developpeur] do |f| %>
       <%= f.input :description %>
       <%= f.input :available %>
+      <%=f.input :price %>
       <%= f.submit "Create Developpeur"%>
 <% end %>
