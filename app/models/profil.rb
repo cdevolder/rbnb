@@ -10,5 +10,5 @@ class Profil < ApplicationRecord
   validates :name, presence: true
   validates :address, presence: true
   validates :city, presence: true
-  mount_uploader :photo, PhotoUploader
+
 end
