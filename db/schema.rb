@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128120543) do
+ActiveRecord::Schema.define(version: 20171128141802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20171128120543) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_messages_on_location_id"
   end
 
   create_table "profils", force: :cascade do |t|
@@ -108,6 +110,7 @@ ActiveRecord::Schema.define(version: 20171128120543) do
   add_foreign_key "developpeurs", "profils"
   add_foreign_key "locations", "developpeurs"
   add_foreign_key "locations", "recruteurs"
+  add_foreign_key "messages", "locations"
   add_foreign_key "profils", "users"
   add_foreign_key "recruteurs", "profils"
   add_foreign_key "reviews", "locations"
