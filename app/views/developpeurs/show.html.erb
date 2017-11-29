@@ -13,11 +13,4 @@
 
 <%= link_to "Edit your profil", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)) %>
 
-<% content_for(:js) do %>
-  <%= javascript_tag do %>
-    const coord = <%= raw @developpeur_coordinates.to_json %>;
-    alert('Developpeur coordinates are ' + coord.lat + ', ' + coord.lng);
-  <% end %>
-<% end %>
-
 
