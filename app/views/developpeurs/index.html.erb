@@ -1,8 +1,5 @@
-<h1>Developpeurs#index</h1>
-<p>Find me in app/views/developpeurs/index.html.erb</p>
-<br>
 <% @developpeurs.each do |developpeur|%>
-<%= cl_image_tag Profil.find(developpeur.profil_id).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
+  <%= cl_image_tag Profil.find(developpeur.profil_id).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
   <p>Name :<%= developpeur.profil.name%></p>
   <% if developpeur.available == "available"%>
     <p>Description :<%= link_to developpeur.description, new_developpeur_location_path(developpeur)%></p>
@@ -12,8 +9,22 @@
   <p>Status :<%= developpeur.available%></p>
   <p>Price :<%= developpeur.price%></p>
   <p>City :<%= Profil.find(developpeur.profil_id).city%></p>
+<% end %>
 
+<div id="map" style="width: 100%; height: 600px;"></div>
 
-
-  <br>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(<%= raw @markers.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+      }
+    });
+  <% end %>
 <% end %>
