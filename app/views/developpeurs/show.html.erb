@@ -3,17 +3,35 @@
 <div class="container-dev">
   <div class="row">
     <div class="col-md-8">
-      <%= cl_image_tag (Profil.find(@developpeur.profil_id)).photo, height: 200, width: 200, crop: :fill, class: "img-cust" %>
-      <p>
-        <%= @developpeur.description %>
-      </p>
-      <p>
-        <%= @developpeur.available %>
-      </p>
-      <p>
-        <%= @developpeur.price %>
-      </p>
-      <%= link_to "Edit your profil", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)) %>
+      <div class="container-presentation">
+        <%= cl_image_tag (Profil.find(@developpeur.profil_id)).photo, height: 200, width: 200, crop: :fill, class: "img-cust photo-dev" %>
+        <div class="col-md-6 col-md-offset-1">
+          <div class="text-container">
+            <p class="text-center"> <strong> <%= @developpeur.profil.name.upcase %> </strong></p>
+            <br>
+            <p><strong>Description: </strong><%= @developpeur.description %> </p>
+            <p><strong>Available: </strong> <%= @developpeur.available %> </p>
+            <p><strong>Price: </strong> <%= @developpeur.price %> €/day</p>
+          </div>
+        </div>
+        <div class="links-dev">
+          <%= link_to "Edit your profil", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)), class: "form-button" %>
+        </div>
+      </div>
     </div>
+    <div class="col-md-4">
+
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+        <div class="container-dev-review">
+          <div class="container-dev-content">
+            <h2><strong> REVIEWS: </strong></h2>
+            <p><strong> 1: </strong> jygkvulhb;vj hcgkutvyligukjb:h;nv guyliguhmjb: jg</p>
+            <p><strong> 2: </strong> jygkvulhb;vj hyligukjb:l;nv guyhcgkutviguhmjb: jg</p>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
