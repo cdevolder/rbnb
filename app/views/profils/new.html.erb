@@ -1,9 +1,25 @@
-<h2>Complete your profile</h2>
-    <%= simple_form_for(@profil) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :address %>
-      <%= f.input :city %>
-      <%= f.input :photo %>
-      <%= f.input :photo_cache, as: :hidden %>
-    <%= f.submit "Save"%>
+<%= simple_form_for (@profil) do |f| %>
+<div class="container white">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <form action="#">
+        <h1 class="text-center">Complete your profile</h1>
+        <div class="row">
+          <div class="col-xs-12">
+            <div = class="form-group">
+              <%= f.input :name %>
+              <%= f.input :address %>
+              <%= f.input :city %>
+              <%= f.input :photo %>
+              <%= f.input :photo_cache, as: :hidden %>
+            </div>
+          </div>
+        </div>
+        <div class="text-right">
+          <%= f.submit "Save", :class => 'btn btn-primary text-right' %>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <% end %>

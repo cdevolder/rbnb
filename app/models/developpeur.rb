@@ -4,6 +4,6 @@ class Developpeur < ApplicationRecord
 
   validates :description, presence: true
   validates :price, presence: true
-  validates :available, inclusion: { in: ["available", "unavailable"], allow_nil: false }
+  validates :available, inclusion: { in: ["Yes", "No"], allow_nil: false }
   mount_uploader :photo, PhotoUploader
 end
