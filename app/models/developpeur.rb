@@ -17,6 +17,6 @@ class Developpeur < ApplicationRecord
   end
 
   def full_address_changed?
-    adress_changed? || city_changed?
+    address_changed? || city_changed?
   end
 end

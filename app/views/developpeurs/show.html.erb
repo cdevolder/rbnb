@@ -11,4 +11,11 @@
   <%= cl_image_tag (Profil.find(@developpeur.profil_id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
 </div>
 
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    const coord = <%= raw @developpeur_coordinates.to_json %>;
+    alert('Developpeur coordinates are ' + coord.lat + ', ' + coord.lng);
+  <% end %>
+<% end %>
+
 
