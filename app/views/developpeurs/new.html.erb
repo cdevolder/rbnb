@@ -10,6 +10,10 @@
               <%= f.input :description %>
               <%= f.input :available, collection: ["Yes", "No"], prompt: "Select your status", selected: "Yes" %>
               <%= f.input :price %>
+              <%= f.hidden_field :address, :value => @profil.address %>
+              <%= f.hidden_field :city, :value => @profil.city %>
+
+
             </div>
           </div>
         </div>
