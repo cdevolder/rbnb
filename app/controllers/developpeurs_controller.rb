@@ -13,8 +13,12 @@ class DeveloppeursController < ApplicationController
 
 
   def index
-    @developpeurs = Developpeur.where.not(latitude: nil, longitude: nil)
 
+    @developpeurs = Developpeur.where.not(latitude: nil, longitude: nil)
+    if params[:search]
+      @developpeurs = Developpeur.near(params[:search], 1000)
+
+    end
     @markers = Gmaps4rails.build_markers(@developpeurs) do |developpeur, marker|
       marker.lat developpeur.latitude
       marker.lng developpeur.longitude
