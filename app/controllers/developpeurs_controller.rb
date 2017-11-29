@@ -16,7 +16,7 @@ class DeveloppeursController < ApplicationController
 
     @developpeurs = Developpeur.where.not(latitude: nil, longitude: nil)
     if params[:search]
-      @developpeurs = Developpeur.near(params[:search], 1000)
+      @developpeurs = Developpeur.near(params[:search])
 
     end
     @markers = Gmaps4rails.build_markers(@developpeurs) do |developpeur, marker|
