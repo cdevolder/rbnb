@@ -1,0 +1,43 @@
+.container-dev {
+  width: 100%;
+  margin: 20px;
+}
+
+.container-presentation {
+  margin: 20px;
+  background-color: white;
+  position: relative;
+  height: 400px;
+  border-radius: 10px;
+}
+
+.photo-dev {
+  border-radius: 10px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.text-container {
+  position: absolute;
+  top: 30px;
+}
+
+.links-dev {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.container-dev-review {
+  margin: 20px;
+  background-color: white;
+  position: relative;
+  border-radius: 10px;
+  margin-right: 60px;
+}
+
+.container-dev-content {
+  top: 20px;
+  left: 20px;
+}
