@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'devise'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry-byebug'
