@@ -1,26 +1,30 @@
 <div class="main-container">
-  <div class="row">
-    <% @developpeurs.each do |developpeur|%>
-      <div class="col-xs-12 col-md-4 col-sm-6">
-        <div class="card-index" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(49, 49, 49, 0.57) 50%), url(<%= cl_image_path Profil.find(developpeur.profil_id).photo, height: 300, width: 400, crop: :fill %>)">
-          <div class="card-category"><%= developpeur.profil.name%></div>
-          <%= link_to '', developpeurs_path(developpeur), :class => "card-link-index" %>
-          <div class="card-description">
-            <p><%= developpeur.price%>€</p>
-          </div>
-          <div class="card-user-index">
-            <% rand(0..3).times do %>
-              <i class="fa fa-star" style="color:gold" aria-hidden="true"></i>
-            <% end %>
+  <div class="container">
+    <div class="row">
+      <% @developpeurs.each do |developpeur|%>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card-index" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(49, 49, 49, 0.57) 50%), url(<%= cl_image_path Profil.find(developpeur.profil_id).photo, height: 300, width: 400, crop: :fill %>)">
+            <div class="card-category"><%= developpeur.profil.name%></div>
+            <div class="card-back"></div>
+            <%= link_to '', developpeur_path(developpeur), :class => "card-link" %>
+            <div class="card-description">
+              <h2><%= developpeur.price%>€</h2>
+            </div>
+            <div class="card-user-index">
+              <% rand(0..5).times do %>
+                <i class="fa fa-star" style="color:gold" aria-hidden="true"></i>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-
   <div id="map"></div>
-
 </div>
+
+
+
 
 <% content_for(:js) do %>
   <%= javascript_tag do %>
@@ -37,4 +41,6 @@
     });
   <% end %>
 <% end %>
+
+
 
