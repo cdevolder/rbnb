@@ -1,11 +1,14 @@
 #map {
-  flex: 0 0 450px;
-  height: 89vh;
+  display: absolute;
+  top: 70px !important;
+  right: 0 !important;
+  height: calc(100vh - 70px);
   position: sticky !important;
-  top: 0 !important;
   z-index: 0;
+  flex: 0 0 450px;
 }
 
 .main-container {
   display: flex;
+  justify-content: space-between;
 }

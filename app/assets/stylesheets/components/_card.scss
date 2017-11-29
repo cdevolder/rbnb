@@ -49,27 +49,10 @@
   opacity: 0.1;
 }
 
-.card-index {
-  background-size: cover !important;
-  background-position: center;
-  position: relative;
-  color: white;
-  font-size: 25px;
-  text-align: center;
-  padding: 60px;
-  margin: 15px 10px;
-  box-shadow: 1px 1px 5px #888888;
-  height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-}
 
-.card-link-index {
-  padding: 60px;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  margin: 15px 10px;
-  height: 175px;
+.card-container {
+  flex: 0 auto;
+  padding: 0 20px;
 }
 
 .card-user-index {
@@ -77,4 +60,16 @@
   right: 10px;
   top: 10px;
   width: 60px;
+}
+
+.card-index {
+  height: 175px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  border-radius: 3px;
+  color: #ffffff;
+  margin: 10px 0,
 }
