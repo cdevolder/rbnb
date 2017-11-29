@@ -13,7 +13,7 @@
       <% if current_user.profil != nil && current_user.profil.developpeur == nil %>
         <%= link_to "Developpeur",new_profil_developpeur_path(Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
       <% elsif current_user.profil != nil && current_user.profil.developpeur != nil%>
-        <%= link_to "Developpeur", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Developpeur", profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
       <% else %>
         <%= link_to "Developpeur", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>

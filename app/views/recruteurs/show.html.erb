@@ -4,3 +4,5 @@
 <div>
   <%= cl_image_tag (Profil.find(@recruteur.profil_id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
 </div>
+
+<%= link_to "Edit your profil", edit_profil_recruteur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)) %>
