@@ -11,6 +11,8 @@
   <%= cl_image_tag (Profil.find(@developpeur.profil_id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
 </div>
 
+<%= link_to "Edit your profil", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)) %>
+
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     const coord = <%= raw @developpeur_coordinates.to_json %>;
