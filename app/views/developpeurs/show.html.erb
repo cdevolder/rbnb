@@ -1,16 +1,19 @@
-<p>
-  <%= @developpeur.description %>
-</p>
-<p>
-  <%= @developpeur.available %>
-</p>
-<p>
-  <%= @developpeur.price %>
-</p>
-<div>
-  <%= cl_image_tag (Profil.find(@developpeur.profil_id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
+
+
+<div class="container-dev">
+  <div class="row">
+    <div class="col-md-8">
+      <%= cl_image_tag (Profil.find(@developpeur.profil_id)).photo, height: 200, width: 200, crop: :fill, class: "img-cust" %>
+      <p>
+        <%= @developpeur.description %>
+      </p>
+      <p>
+        <%= @developpeur.available %>
+      </p>
+      <p>
+        <%= @developpeur.price %>
+      </p>
+      <%= link_to "Edit your profil", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)) %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "Edit your profil", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)) %>
-
-
