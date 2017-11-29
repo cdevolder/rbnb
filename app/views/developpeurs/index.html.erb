@@ -1,11 +1,3 @@
-<%= simple_form_for(developpeurs_path, :method => "get", id: "search-form", ) do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
-  <%= submit_tag "Search", :name => nil, class: "btn btn-xs"%>
-<% end %>
-
-
-
-
 <% @developpeurs.each do |developpeur|%>
   <%= cl_image_tag Profil.find(developpeur.profil_id).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
   <p>Name :<%= developpeur.profil.name%></p>
