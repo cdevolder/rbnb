@@ -1,0 +1,11 @@
+#map {
+  flex: 0 0 450px;
+  height: 89vh;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 0;
+}
+
+.main-container {
+  display: flex;
+}
