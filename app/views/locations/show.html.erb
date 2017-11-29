@@ -1,2 +1,12 @@
 <h1>Locations#show</h1>
 <p>Find me in app/views/locations/show.html.erb</p>
+<p>Dev:<%= @location.developpeur.profil.name%></p>
+<p>Recruteur:<%= @location.recruteur.profil.name%></p>
+<p>check in:<%= @location.check_in%></p>
+<p>check out:<%= @location.check_out%></p>
+<p>Status:<%= @location.status%></p>
+<p>dev Price:<%= @location.developpeur.price.to_i %></p>
+
+<p>Price:<%= ((@location.check_out - @location.check_in).to_i) * @location.developpeur.price.to_i %></p>
+
+

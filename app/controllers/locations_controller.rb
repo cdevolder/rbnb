@@ -3,11 +3,20 @@ class LocationsController < ApplicationController
   before_action :set_location, only: [:show]
 
   def new
-    @locations = Location.new
+    @location = Location.new
+    @developpeur = Developpeur.find(params[:developpeur_id])
   end
 
+
   def create
+    hash = params.require(:location).permit(:developpeur)
+    leid = hash.values.first
+    @developpeur = Developpeur.find(leid)
+    @recruteur = Recruteur.find(current_user.profil.recruteur.id)
+    # @recruteur = Recruteur.find(current_user.profil.id)
     @location = Location.new(location_params)
+    @location.developpeur = @developpeur
+    @location.recruteur = @recruteur
     if @location.save
       redirect_to location_path(@location)
     else
@@ -16,6 +25,7 @@ class LocationsController < ApplicationController
   end
 
   def show
+    @location =  Location.find(params[:id])
   end
 
   def destroy
@@ -26,7 +36,7 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:status, :check_in, :check_out, :recruteur_id, :developpeur_id )
+    params.require(:location).permit(:status, :check_in, :check_out, :recruteur_id, :developpeur_id)
   end
 
   def set_location

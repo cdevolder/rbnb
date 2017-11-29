@@ -1,2 +1,13 @@
 <h1>Locations#new</h1>
 <p>Find me in app/views/locations/new.html.erb</p>
+<h2>Complete your Developpeur profile</h2>
+<h2><%=@developpeur.description%></h2>
+<h2><%=@developpeur.price%></h2>
+
+    <%= simple_form_for @location do |f| %>
+      <%= f.input :check_in %>
+      <%= f.input :check_out %>
+      <%= f.input :status %>
+      <%= f.hidden_field :developpeur, :value => @developpeur.id %>
+      <%= f.submit "Create Location"%>
+<% end %>
