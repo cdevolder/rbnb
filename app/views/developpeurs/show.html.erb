@@ -11,6 +11,22 @@
   <%= cl_image_tag (Profil.find(@developpeur.profil_id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
 </div>
 
-<%= link_to "Edit your profil", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)) %>
+<%= link_to "Edit your Location", new_developpeur_location_path(@developpeur) %>
 
 
+  <div id="map"></div>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(<%= raw @markers.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+      }
+    });
+  <% end %>
+<% end %>
