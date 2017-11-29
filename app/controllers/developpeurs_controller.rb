@@ -13,7 +13,13 @@ class DeveloppeursController < ApplicationController
 
 
   def index
-    @developpeurs = Developpeur.all
+    @developpeurs = Developpeur.where.not(latitude: nil, longitude: nil)
+
+    @markers = Gmaps4rails.build_markers(@developpeurs) do |developpeur, marker|
+      marker.lat developpeur.latitude
+      marker.lng developpeur.longitude
+      # marker.infowindow render_to_string(partial: "/developpeurs/map_box", locals: { developpeur: developpeur })
+    end
   end
 
   def edit
@@ -30,7 +36,8 @@ class DeveloppeursController < ApplicationController
   end
 
   def show
-    @developpeur = Developpeur.find(params[:id])
+    @developpeur = Developpeur.find(params[:profil_id])
+    @developpeur_coordinates = { lat: @developpeur.latitude, lng: @developpeur.longitude }
   end
 
   def new
