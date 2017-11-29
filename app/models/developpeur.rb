@@ -19,4 +19,8 @@ class Developpeur < ApplicationRecord
   def full_address_changed?
     address_changed? || city_changed?
   end
+
+  def self.search(search)
+    where("city LIKE ?", "%#{search}%")
+  end
 end
