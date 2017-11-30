@@ -1,5 +1,6 @@
 <div class= "container-show">
-  <h1 class="text-center"><strong> PROFILE </strong></h1>
+  <h1 class="text-center">Your Profile </h1>
+  <br>
   <div class = "row">
     <div class = "col-md-4">
       <div class= "card-show">
@@ -9,9 +10,9 @@
           <br><%= @profil.name%>
           <br><%=@profil.address%>
           <br><%=@profil.city.capitalize%>
-          <div class= "card-edit-show">
+        </div>
+        <div class= "card-edit-show">
             <%= link_to "Edit Profile", edit_profil_path(@profil), class: "form-button" %>
-          </div>
         </div>
       </div>
     </div>
