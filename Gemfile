@@ -23,6 +23,8 @@ gem 'coffee-rails'
 gem 'gmaps4rails'
 gem 'turbolinks'
 gem 'geocomplete_rails', '~> 1.7'
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
+
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
