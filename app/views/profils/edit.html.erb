@@ -9,8 +9,7 @@
             <div = class="form-group">
               <%= f.input :name %>
               <%= f.input :address , input_html: {id: "profil_address"}%>
-              <%= f.input :city , input_html: {id: "profil_ci"}%>
-
+              <%= f.input :city , input_html: {id: "profil_city"}%>
               <%= f.input :photo %>
               <%= f.input :photo_cache, as: :hidden %>
             </div>
@@ -26,5 +25,5 @@
 <% end %>
 
 <%= content_for(:after_js) do %>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDANjx3bosEtIyzJaoWs50Wnt6nt_1rmxU"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAjH6oP0ksqS7uNlafARSObT8S1VWR_Nds"></script>
 <% end %>
