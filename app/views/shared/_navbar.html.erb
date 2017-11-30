@@ -13,7 +13,7 @@
       <% if current_user.profil != nil && current_user.profil.developpeur == nil %>
         <%= link_to "Developpeur",new_profil_developpeur_path(Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
       <% elsif current_user.profil != nil && current_user.profil.developpeur != nil%>
-        <%= link_to "Developpeur", profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Developpeur", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Developpeur.find(current_user.profil.developpeur.id)), class: "navbar-wagon-item navbar-wagon-link" %>
       <% else %>
         <%= link_to "Developpeur", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
@@ -22,7 +22,7 @@
       <% if current_user.profil != nil && current_user.profil.recruteur == nil %>
         <%= link_to "Recruteur",new_profil_recruteur_path(Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
       <% elsif current_user.profil != nil &&  current_user.profil.recruteur != nil%>
-        <%= link_to "Recruteur", edit_profil_recruteur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Recruteur", edit_profil_recruteur_path(Profil.find(current_user.profil.id), Recruteur.find(current_user.profil.recruteur.id)), class: "navbar-wagon-item navbar-wagon-link" %>
       <% else %>
         <%= link_to "Recruteur", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
