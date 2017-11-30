@@ -23,12 +23,11 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @messages = Message.all
     @message = Message.new
     @location =  Location.find(params[:id])
     @x = Location.find(@location.id).id
     sql = "select * from messages WHERE location_id = #{@x}"
-    @messagess = ActiveRecord::Base.connection.execute(sql).values
+    @messages = ActiveRecord::Base.connection.execute(sql).values
   end
 
   def destroy

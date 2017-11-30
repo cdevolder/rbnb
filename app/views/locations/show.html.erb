@@ -56,18 +56,17 @@
             <% @messages.each do |message|%>
               <div class="message">
                 <div class="message-name">
-                  <% if @location.developpeur.profil.id = message.sender_id %>
+                  <% if @location.developpeur.profil.id = message[-1] %>
                     <%= Profil.find(@location.developpeur.profil_id).name %>
                   <% else %>
                     <%= Profil.find(@location.recruteur.profil_id).name %>
                   <% end %>
                 </div>
                 <div class="message-body">
-                  <%= message.content %>
-                  <%= message.content %>
+                  <%= message[1] %>
                 </div>
                 <div class="message-body">
-                  <%= message.created_at %>
+                  <%= message[3] %>
                 </div>
               </div>
               <br>
