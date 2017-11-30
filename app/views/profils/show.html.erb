@@ -10,7 +10,9 @@
           <p><strong> Name: </strong><%= @profil.name%></p>
           <p><strong> Address: </strong><%=@profil.address%></p>
           <p><strong> City: </strong><%=@profil.city.capitalize%></p>
-          <p><strong> Description: </strong><%=@profil.recruteur.description %></p>
+          <% if @profil.recruteur %>
+          <p><strong> Description: </strong><%= @profil.recruteur.description %></p>
+          <% end %>
         </div>
         <div class= "card-edit-show">
             <%= link_to "Edit Profile", edit_profil_path(@profil), class: "form-button" %>
