@@ -6,7 +6,7 @@ function onPlaceChanged() {
   profilAddress.blur();
   profilAddress.value = components.address;
 
-  document.getElementById('profil_ci').value = components.address;
+  document.getElementById('profil_city').value = components.city;
 
 
   if (components.country_code) {
@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var profilAddress = document.getElementById('profil_address');
 
   if (profilAddress) {
+
     var autocomplete = new google.maps.places.Autocomplete(profilAddress, { types: ['geocode'] });
     google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
     google.maps.event.addDomListener(profilAddress, 'keydown', function(e) {
