@@ -10,7 +10,7 @@ class Developpeur < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   geocoded_by :full_address
-  after_validation :geocode, if: :full_address_changed?
+  before_validation :geocode, if: :full_address_changed?
 
   def full_address
     "#{address}, #{city}"
