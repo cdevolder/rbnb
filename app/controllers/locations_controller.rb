@@ -23,6 +23,7 @@ class LocationsController < ApplicationController
   end
 
   def show
+    @messages = Message.all
     @message = Message.new
     @location =  Location.find(params[:id])
     @x = Location.find(@location.id).id

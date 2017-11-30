@@ -10,12 +10,12 @@ class MessagesController < ApplicationController
   def create
     @location = Location.find(params[:location_id])
     @message = Message.new(message_params)
-    @message.location = @location
+    @message.location_id = @location.id
 
     @message.sender = Profil.find(params.require(:message).permit(:sender_id)["sender_id"])
     @message.recipient = Profil.find(params.require(:message).permit(:recipient_id)["recipient_id"])
 
-    if @review.save
+    if @message.save
       redirect_to location_path(params[:location_id])
     else
       render :new
