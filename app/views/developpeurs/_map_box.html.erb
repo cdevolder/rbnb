@@ -1,0 +1,5 @@
+<div class="map_box">
+  <h3><%= developpeur.profil.name %></h3>
+  <%= cl_image_tag developpeur.profil.photo, width: 130, :radius=>"max", crop: :fill%>
+  <%= link_to "Details", developpeur_path(developpeur), target: :blank, class: "form-button" %>
+</div>

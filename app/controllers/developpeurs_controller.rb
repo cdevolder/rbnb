@@ -21,7 +21,7 @@ class DeveloppeursController < ApplicationController
     @markers = Gmaps4rails.build_markers(@developpeurs) do |developpeur, marker|
       marker.lat developpeur.latitude
       marker.lng developpeur.longitude
-      # marker.infowindow render_to_string(partial: "/developpeurs/map_box", locals: { developpeur: developpeur })
+      marker.infowindow render_to_string(partial: "/developpeurs/map_box", locals: { developpeur: developpeur })
     end
   end
 
