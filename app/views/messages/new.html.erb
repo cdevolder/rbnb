@@ -1,2 +1,9 @@
-<h1>Messages#new</h1>
-<p>Find me in app/views/messages/new.html.erb</p>
+
+<%= simple_form_for [@location, @message] do |f| %>
+  <%= f.input :content %>
+  <%= f.hidden_field :sender_id, :value => @location.recruteur.profil_id %>
+  <%= f.hidden_field :recipient_id, :value => @location.developpeur.profil_id %>
+
+  <%= f.submit "Create Message", class: "form-button" %>
+
+<% end %>
