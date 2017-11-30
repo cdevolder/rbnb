@@ -27,7 +27,7 @@
           <p><strong> Check-out: </strong><%= @location.check_out%></p>
           <br>
           <br>
-          <h4><strong> Total Price: </strong><%= (((@location.check_out - @location.check_in).to_i) + 1)* @location.developpeur.price.to_i %> €</h4>
+          <h4><strong> Total Price: </strong><%= (((@location.check_out - @location.check_in).to_i))* @location.developpeur.price.to_i %> €</h4>
         </div>
       </div>
     </div>

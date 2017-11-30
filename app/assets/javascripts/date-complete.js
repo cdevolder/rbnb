@@ -5,7 +5,11 @@
 
 document.addEventListener("DOMContentLoaded", function() {
   profilCheckout.addEventListener("blur", function() {
-    profilPrice.innerText = "Price : " + devPrice
+    var mydatein = new Date(profilCheckin.value);
+    var mydateout = new Date(profilCheckout.value);
+    var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+    var diffDays = Math.round(Math.abs((mydateout.getTime() - mydatein.getTime())/(oneDay)));
+    profilPrice.innerText = "Total price: " + (diffDays * devPrice) + "€"
 
   });
 });
