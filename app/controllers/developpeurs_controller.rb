@@ -40,7 +40,7 @@ class DeveloppeursController < ApplicationController
   end
 
   def show
-
+    @location = Location.new
     @developpeur = Developpeur.find(params[:id])
     @developpeur_coordinates = { lat: @developpeur.latitude, lng: @developpeur.longitude }
     @markers = Gmaps4rails.build_markers(@developpeur) do |developpeu, marker|
