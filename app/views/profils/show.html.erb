@@ -20,53 +20,32 @@
       </div>
     </div>
     <div class = "col-md-8">
-      <div class="container-review">
-        <h2>Recruteurs Reviews </h2>
-        <div class= review-show>
-          <div class= "review-name">
-            <h3> Domi </h3>
-            <p> 13/02/16</p>
-          </div>
-          <div class= "review-body">
-            <p> Perfect !</p>
-          </div>
+<div class="container-dev-review">
+  <div class="container-dev-content">
+    <h2 class="text-center">LOCATIONS</h2>
+    <% @locations.each do |location|%>
+      <div class="message">
+        <%= cl_image_tag Developpeur.find(location[-4]).profil.photo,crop: :fill, class: "avatar-large" %>
+        <div class="message-name">
+          <h3><%=Developpeur.find(location[-4]).profil.name%></h3>
+          <p><%= location[1]%></p>
         </div>
-        <div class= review-show>
-          <div class= "review-name">
-            <h3> Domi </h3>
-            <p> 13/02/16</p>
-          </div>
-          <div class= "review-body">
-            <p> Perfect !</p>
-          </div>
+        <div class="message-body">
+          <p><strong>Description de <%= Developpeur.find(location[-4]).profil.name%></strong></p>
+          <p>
+            <%=Developpeur.find(location[-4]).description%>
+          </p>
         </div>
-        <div class= review-show>
-          <div class= "review-name">
-            <h3> JC </h3>
-            <p> 22/05/16</p>
-          </div>
-          <div class= "review-body">
-            <p> Merci </p>
-          </div>
-        </div>
+        <div class="message-status">
+    <p class="status pending">Pending</p>
+    <p class="price"><%= location[-1]%> €</p>
+  </div>
       </div>
+      <br>
+
+    <% end %>
+  </div>
+</div>
     </div>
   </div>
 
-
-<div id="map"></div>
-<% content_for(:js) do %>
-  <%= javascript_tag do %>
-    var handler = Gmaps.build('Google');
-    handler.buildMap({ internal: { id: 'map' } }, function() {
-      markers = handler.addMarkers(<%= raw @markers.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-      if (markers.length == 0) {
-        handler.getMap().setZoom(2);
-      } else if (markers.length == 1) {
-        handler.getMap().setZoom(14);
-      }
-    });
-  <% end %>
-<% end %>

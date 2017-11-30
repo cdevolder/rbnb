@@ -24,11 +24,12 @@
           <br>
 
           <p id="dev-price1"> Price/day: <%=@developpeur.price %> € </p>
-          <p id="dev-price"> Total price : <%=0 %> € </p>
+          <p id="dev-price"> Total price : 0 € </p>
 
           <%= f.hidden_field :status, :value => "pending" %>
           <%= f.hidden_field :developpeur, :value => @developpeur.id %>
           <%= f.hidden_field :developpeurprice, :value => @developpeur.price , id: "dev-price-dev" %>
+          <%= f.input :price, :value => 0, input_html: {id: "pricer"}%>
 
           <%= f.submit "Create Location", class: "form-button" %>
 
