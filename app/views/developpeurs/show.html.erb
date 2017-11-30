@@ -23,7 +23,9 @@
           </div>
           <br>
 
-          <p id="dev-price"> Price : </p>
+          <p id="dev-price1"> Price/day: <%=@developpeur.price %> € </p>
+          <p id="dev-price"> Total price : <%=0 %> € </p>
+
           <%= f.hidden_field :status, :value => "pending" %>
           <%= f.hidden_field :developpeur, :value => @developpeur.id %>
           <%= f.hidden_field :developpeurprice, :value => @developpeur.price , id: "dev-price-dev" %>
