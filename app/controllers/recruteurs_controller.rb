@@ -27,7 +27,7 @@ class RecruteursController < ApplicationController
     @recruteur.profil = @profil
     @recruteur.save
     if @recruteur.save
-      redirect_to profil_recruteur_path(@profil, @recruteur)
+      redirect_to profil_path(@profil)
     else
       render :new
     end

@@ -1,8 +1,55 @@
-<p>
-  <%= @recruteur.description %>
-</p>
-<div>
-  <%= cl_image_tag (Profil.find(@recruteur.profil_id)).photo, height: 200, width: 200, :radius=>"max", crop: :fill, class: "img-cust" %>
-</div>
 
-<%= link_to "Edit your profil", edit_profil_recruteur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)) %>
+##############################################################################################
+
+
+<div class="container-dev">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="container-presentation">
+        <%= cl_image_tag (Profil.find(@recruteur.profil_id)).photo, height: 200, width: 200, crop: :fill, class: "img-cust" %>
+        <div class="col-md-6 col-md-offset-1">
+          <div class="text-container">
+            <p class="text-center"> <strong> <%= @recruteur.profil.name.upcase %> </strong></p>
+            <br>
+            <p><strong>Description: </strong><%= @recruteur.description %> </p>
+          </div>
+        </div>
+        <div class="links-dev">
+          <%= link_to "Edit your profil", edit_profil_recruteur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)), class: "form-button" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+
+  <div class="row">
+
+      <div class="col-md-12">
+
+        <div class="container-dev-review">
+          <div class="container-dev-content">
+            <% if @reviews %>
+            <% @reviews.each_with_index do |review, ind|%>
+              <div class="message">
+                <%= cl_image_tag (Profil.find(review[-2])).photo,crop: :fill, class: "avatar-large" %>
+                <div class="message-name">
+                  <h3><%=Profil.find(review[-2]).name%></h3>
+                  <p>10/07/17</p>
+                </div>
+                <div class="message-body">
+                  <p><strong><%= review[1] %></strong></p>
+                  <p>
+                    rate : <%= review[2] %>
+                  </p>
+                </div>
+              </div>
+              <br>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  </div>
+
+</div>
