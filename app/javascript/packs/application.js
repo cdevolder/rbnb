@@ -13,3 +13,4 @@ $("#geo-input").geocomplete();
 
 import './google-maps-autocomplete'
 import './google-maps-autocomplete1'
+import './jquerygeocomplete'

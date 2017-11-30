@@ -10,9 +10,6 @@
         <p><strong>Price: </strong> <%= @developpeur.price %> €/day</p>
       </div>
 
-      <div class="links-dev">
-        <%= link_to "Edit your profil", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Profil.find(current_user.profil.id)), class: "form-button" %>
-      </div>
     </div>
   </div>
   <div class="desc-create-location">
@@ -21,14 +18,16 @@
 
           <h3 class="text-center">Create a new location</h3>
           <div class="align-date">
-            <%= f.input :check_in %>
-            <%= f.input :check_out %>
+            <%= f.input :check_in , html5: true, input_html: {id: "dev-check_in"}%>
+            <%= f.input :check_out , html5: true, input_html: {id: "dev-check_out"}%>
           </div>
           <br>
 
-          <p> Price : <%= @developpeur.price%></p>
+          <p id="dev-price"> Price : </p>
           <%= f.hidden_field :status, :value => "pending" %>
           <%= f.hidden_field :developpeur, :value => @developpeur.id %>
+          <%= f.hidden_field :developpeurprice, :value => @developpeur.price , id: "dev-price-dev" %>
+
           <%= f.submit "Create Location", class: "form-button" %>
 
         <% end %>
