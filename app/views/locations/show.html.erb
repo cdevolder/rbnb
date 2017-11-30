@@ -12,7 +12,25 @@
           <p><strong> Status: </strong><%= @location.status %></p>
         </div>
         <div class= "card-edit-show">
-            <%= link_to "Send a Message", new_location_message_path(@location), class: "form-button" %>
+          <div class="desc-create-location">
+            <div class="container-message-form">
+              <%= simple_form_for [@location, @message] do |f| %>
+                <h6 class="text-center">Create a new Message</h6>
+                <br>
+                <div class="align-date">
+                  <%= f.input :content %>
+                </div>
+                <br>
+                <%= f.hidden_field :sender_id, :value => current_user.profil.id %>
+                <% if @location.developpeur.profil_id != current_user.profil.id %>
+                  <%= f.hidden_field :recipient_id, :value => @location.developpeur.profil_id %>
+                <% else %>
+                  <%= f.hidden_field :recipient_id, :value => @location.recruteur.profil_id %>
+                <% end %>
+                <%= f.submit "Create Message", class: "form-button" %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -30,5 +48,30 @@
           <h4><strong> Total Price: </strong><%= (((@location.check_out - @location.check_in).to_i))* @location.developpeur.price.to_i %> €</h4>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container-message-content">
+            <% @messages.each do |message|%>
+              <div class="message">
+                <div class="message-name">
+                  <% if @location.developpeur.profil.id = message.sender_id %>
+                    <%= Profil.find(@location.developpeur.profil_id).name %>
+                  <% else %>
+                    <%= Profil.find(@location.recruteur.profil_id).name %>
+                  <% end %>
+                </div>
+                <div class="message-body">
+                  <%= message.content %>
+                  <%= message.content %>
+                </div>
+                <div class="message-body">
+                  <%= message.created_at %>
+                </div>
+              </div>
+              <br>
+            <% end %>
+          </div>
     </div>
   </div>
