@@ -44,6 +44,7 @@
 
         <div class="container-dev-review">
           <div class="container-dev-content">
+            <% if @developpeur.reviews %>
             <% @reviews.each_with_index do |review, ind|%>
               <div class="message">
                 <%= cl_image_tag (Profil.find(review[-2])).photo,crop: :fill, class: "avatar-large" %>
@@ -59,6 +60,7 @@
                 </div>
               </div>
               <br>
+            <% end %>
             <% end %>
           </div>
         </div>
