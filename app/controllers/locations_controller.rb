@@ -9,9 +9,7 @@ class LocationsController < ApplicationController
 
 
   def create
-    hash = params.require(:location).permit(:developpeur)
-    leid = hash.values.first
-    @developpeur = Developpeur.find(leid)
+    @developpeur = Developpeur.find(params[:developpeur_id])
     @recruteur = Recruteur.find(current_user.profil.recruteur.id)
     # @recruteur = Recruteur.find(current_user.profil.id)
     @location = Location.new(location_params)

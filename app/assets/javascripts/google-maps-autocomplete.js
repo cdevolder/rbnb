@@ -6,7 +6,8 @@ function onPlaceChanged() {
   profilAddress.blur();
   profilAddress.value = components.address;
 
-  document.getElementById('profil_city').value = components.city;
+  document.getElementById('profil_ci').value = components.address;
+
 
   if (components.country_code) {
     var selector = '#profil_country option[value="' + components.country_code + '"]';

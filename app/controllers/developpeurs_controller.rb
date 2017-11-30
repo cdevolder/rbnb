@@ -48,8 +48,9 @@ class DeveloppeursController < ApplicationController
       marker.lng developpeu.longitude
       # marker.infowindow render_to_string(partial: "/developpeurs/map_box", locals: { developpeur: developpeur })
     end
-    @reviews = Review.all
-
+    @x = Profil.find(@developpeur.profil_id).id
+    sql = "select * from reviews WHERE recipient_id = #{@x}"
+    @reviews = ActiveRecord::Base.connection.execute(sql).values
 
   end
 
