@@ -27,6 +27,13 @@ class ProfilsController < ApplicationController
     @profil = Profil.find(current_user.profil.id)
     @profil.update(profil_params)
 
+    if @profil.developpeur
+      @profil.developpeur.address = @profil.address
+      @profil.developpeur.city = @profil.city
+      @profil.developpeur.geocode
+      @profil.developpeur.save!
+    end
+
     redirect_to profil_path(@profil)
   end
 
