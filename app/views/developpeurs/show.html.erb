@@ -21,20 +21,55 @@
       </div>
     </div>
     <div class="col-md-4">
-
-
     </div>
   </div>
+
   <div class="row">
+
       <div class="col-md-12">
+
         <div class="container-dev-review">
           <div class="container-dev-content">
-            <h2><strong> REVIEWS: </strong></h2>
-            <p><strong> 1: </strong> jygkvulhb;vj hcgkutvyligukjb:h;nv guyliguhmjb: jg</p>
-            <p><strong> 2: </strong> jygkvulhb;vj hyligukjb:l;nv guyhcgkutviguhmjb: jg</p>
+            <% @reviews.each_with_index do |review, ind|%>
+              <div class="message">
+                <%= cl_image_tag (Profil.find(review[-2])).photo,crop: :fill, class: "avatar-large" %>
+                <div class="message-name">
+                  <h3><%=Profil.find(review[-2]).name%></h3>
+                  <p>10/07/17</p>
+                </div>
+                <div class="message-body">
+                  <p><strong><%= review[1] %></strong></p>
+                  <p>
+                    rate : <%= review[2] %>
+                  </p>
+                </div>
+              </div>
+              <br>
+            <% end %>
           </div>
         </div>
       </div>
   </div>
-</div>
 
+</div>
+<div class="container">
+  <div class="wrapper">
+
+  </div>
+</div>
+  <div id="map"></div>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(<%= raw @markers.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+      }
+    });
+  <% end %>
+<% end %>

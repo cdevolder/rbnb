@@ -3,6 +3,9 @@
 <%= simple_form_for [@location, @review] do |f| %>
   <%= f.input :description %>
   <%= f.input :rating %>
+  <%= f.hidden_field :sender_id, :value => @location.recruteur.profil_id %>
+  <%= f.hidden_field :recipient_id, :value => @location.developpeur.profil_id %>
+
   <%= f.submit "Create Location", class: "form-button" %>
 
 <% end %>
