@@ -18,3 +18,8 @@ Language.destroy_all
 languages = ['C', 'Java', 'Objective c', 'C++', 'C#', 'PHP', 'Visual Basic', 'Python', 'Transact SQL', 'JavaScript', 'Visual Basic', 'Perl', 'Ruby', 'Matlab', 'Delphi', 'Lips', 'PL/SQL', 'Pascal', 'Assembly', 'F#']
 languages.each { |language| Language.create!(name: language)}
 
+user = User.create!([{:email => 'chris@gmail.com', :encrypted_password =>'topsecret'}])
+
+profil = Profil.create!([{ :name => 'Christophe', :address => '7. Rue de Hagen', :city => 'Steinfort' }])
+
+
