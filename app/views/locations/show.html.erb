@@ -1,12 +1,34 @@
-<h1>Locations#show</h1>
-<p>Find me in app/views/locations/show.html.erb</p>
-<p>Dev:<%= @location.developpeur.profil.name%></p>
-<p>Recruteur:<%= @location.recruteur.profil.name%></p>
-<p>check in:<%= @location.check_in%></p>
-<p>check out:<%= @location.check_out%></p>
-<p>Status:<%= @location.status%></p>
-<p>dev Price:<%= @location.developpeur.price.to_i %></p>
 
-<p>Price:<%= (((@location.check_out - @location.check_in).to_i) + 1)* @location.developpeur.price.to_i %></p>
-
-
+<h1 class="text-center"> Location n° <%= @location.id %> </h1>
+  <br>
+  <div class = "row">
+    <div class = "col-md-8">
+      <div class= "card-show">
+        <h2 class="text-center">INFORMATIONS</h2>
+        <br>
+        <div class= "card-description-show">
+          <p><strong> Developpeur: </strong><%= @location.developpeur.profil.name %></p>
+          <p><strong> Recruteur: </strong><%= @location.recruteur.profil.name %></p>
+          <p><strong> Status: </strong><%= @location.status %></p>
+        </div>
+        <div class= "card-edit-show">
+            <%= link_to "Send a Message", new_location_message_path(@location), class: "form-button" %>
+        </div>
+      </div>
+    </div>
+    <div class = "col-md-4">
+      <div class="card-show">
+        <h4 class="text-center"> RAPPEL COMMANDE </h4>
+        <br>
+        <br>
+        <div class= "card-description-show">
+          <p><strong> Price per day: </strong><%= @location.developpeur.price.to_i %></p>
+          <p><strong> Check-in: </strong><%= @location.check_in%></p>
+          <p><strong> Check-out: </strong><%= @location.check_out%></p>
+          <br>
+          <br>
+          <h4><strong> Total Price: </strong><%= (((@location.check_out - @location.check_in).to_i))* @location.developpeur.price.to_i %> €</h4>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,23 +1,36 @@
-<div class= "container-show">
-  <h1 class="text-center"><strong> PROFILE </strong></h1>
+
+  <h1 class="text-center">Your Profile </h1>
+  <br>
   <div class = "row">
     <div class = "col-md-4">
       <div class= "card-show">
         <%= cl_image_tag @profil.photo, height: 50, width: 50, :radius=>"max", crop: :fill, class: "card-user-show img-cust" %>
-        <div class= "card-presentation-show"><h2>Présentation</h2></div>
+        <h2 class="text-center">PRESENTATION</h2>
         <div class= "card-description-show">
-          <br><%= @profil.name%>
-          <br><%=@profil.address%>
-          <br><%=@profil.city.capitalize%>
-          <div class= "card-edit-show">
+          <p><strong> Name: </strong><%= @profil.name%></p>
+          <p><strong> Address: </strong><%=@profil.address%></p>
+          <p><strong> City: </strong><%=@profil.city.capitalize%></p>
+          <% if @profil.recruteur %>
+          <p><strong> Description: </strong><%= @profil.recruteur.description %></p>
+          <% end %>
+        </div>
+        <div class= "card-edit-show">
             <%= link_to "Edit Profile", edit_profil_path(@profil), class: "form-button" %>
-          </div>
         </div>
       </div>
     </div>
     <div class = "col-md-8">
       <div class="container-review">
         <h2>Recruteurs Reviews </h2>
+        <div class= review-show>
+          <div class= "review-name">
+            <h3> Domi </h3>
+            <p> 13/02/16</p>
+          </div>
+          <div class= "review-body">
+            <p> Perfect !</p>
+          </div>
+        </div>
         <div class= review-show>
           <div class= "review-name">
             <h3> Domi </h3>
@@ -39,7 +52,21 @@
       </div>
     </div>
   </div>
-</div>
 
 
-
+<div id="map"></div>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(<%= raw @markers.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+      }
+    });
+  <% end %>
+<% end %>

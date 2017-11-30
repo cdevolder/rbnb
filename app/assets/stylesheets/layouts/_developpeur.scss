@@ -11,6 +11,43 @@
   border-radius: 10px;
 }
 
+.container-location {
+  margin: 20px;
+  background-color: white;
+  position: relative;
+  height: 400px;
+  border-radius: 10px;
+}
+
+.adapt-container-location{
+      position:relative;
+
+}
+
+
+.grid{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 25% 25%;
+
+}
+
+.desc-developpeur {
+
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.desc-reviews-dev {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 2;
+}
+
+.desc-create-location {
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 1;
+}
+
 .photo-dev {
   border-radius: 10px;
   position: absolute;
@@ -21,6 +58,11 @@
 .text-container {
   position: absolute;
   top: 30px;
+}
+
+.align-date{
+  display: flex;
+  justify-content: space-around;
 }
 
 .links-dev {
