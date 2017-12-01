@@ -35,7 +35,7 @@ class LocationsController < ApplicationController
     @message = Message.new
     @location =  Location.find(params[:id])
     @profil = current_user.profil
-    @messages = Message.all.where('sender_id=? OR recipient_id=?', @profil.id, @profil.id)
+    @messages = Message.all.where('sender_id=? OR recipient_id=?', @profil.id, @profil.id).reverse
   end
 
   def destroy
