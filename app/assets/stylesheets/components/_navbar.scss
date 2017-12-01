@@ -110,7 +110,7 @@
 
 .dropbtn {
   font-size: 14px;
-    color: black;
+    color: pink;
     cursor: pointer;
     margin-bottom: 0px;
 
@@ -131,12 +131,12 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 
-  transition: color 0.3s ease;
-  font-weight: lighter !important;
-  color: #999999 !important;
-  font-size: 15px !important;
-  line-height: 22px !important;
-  padding: 10px 20px;
+    transition: color 0.3s ease;
+    font-weight: lighter !important;
+    color: #999999 !important;
+    font-size: 15px !important;
+    line-height: 22px !important;
+    padding: 10px 20px;
 }
 
 .dropdown-content a {
