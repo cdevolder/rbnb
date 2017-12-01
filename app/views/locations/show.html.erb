@@ -13,7 +13,6 @@
         <div class= "card-description-show">
           <p><strong> Developpeur: </strong><%= @location.developpeur.profil.name %></p>
           <p><strong> Recruteur: </strong><%= @location.recruteur.profil.name %></p>
-          <p><strong> Status: </strong><%= @location.status %></p>
         </div>
         <%= render 'shared/newmessage', location: @location, message: @message %>
       </div>

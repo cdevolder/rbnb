@@ -24,12 +24,12 @@
 
           <p id="dev-price1"> Price/day: <%=@developpeur.price %> € </p>
           <p id="dev-price"> Total price : 0 € </p>
-
+        <div style="opacity: 0;">
           <%= f.hidden_field :status, :value => "pending" %>
           <%= f.hidden_field :developpeur, :value => @developpeur.id %>
           <%= f.hidden_field :developpeurprice, :value => @developpeur.price , id: "dev-price-dev" %>
-          <%= f.hidden_field :price, :value => 0, input_html: {id: "pricer"}%>
-
+          <p style="opacity: 0;"><%= f.input :price, :value => 0, input_html: {id: "pricer"}%></p>
+          </div>
           <%= f.submit "Create Location", class: "form-button" %>
       <% end %>
     </div>
@@ -75,6 +75,7 @@
 <%= content_for(:after_js) do %>
   <script type="text/javascript">
     console.log('coucou');
+    let pricerrrr = document.getElementById('pricer');
     var profilPrice = document.getElementById('dev-price');
 var putPrice = document.getElementById('dev-price');
 
@@ -92,6 +93,7 @@ profilCheckout.addEventListener('change', function() {
   var diffDays = Math.round(Math.abs((mydateout.getTime() - mydatein.getTime())/(oneDay)));
   profilPrice.innerText = "Total price: " + (diffDays * testPrice) + "€"
   putPrice.value = (diffDays * testPrice)
+  pricerrrr. value = putPrice.value
 
 });
   </script>
