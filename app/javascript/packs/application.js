@@ -6,12 +6,10 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
-
+import './jquery.geocomplete'
 $(function() {
 $("#geo-input").geocomplete();
 });
 
 import './google-maps-autocomplete'
 import './google-maps-autocomplete1'
-import './jquerygeocomplete'
-import './date-complete'

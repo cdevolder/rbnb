@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   belongs_to :sender, class_name: "Profil", foreign_key: "sender_id"
   belongs_to :recipient, class_name: "Profil", foreign_key: "recipient_id"
 
-  validates :rating, numericality: { only_integer: true }, inclusion: { in: ["0", 1, 2, 3, 4, 5], allow_nil: false }
+  validates_numericality_of :rating, presence: :true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 5, default: 'can\'t be blank'
   validates :description, presence: true
 
 
