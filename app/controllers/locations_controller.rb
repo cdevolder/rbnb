@@ -25,9 +25,8 @@ class LocationsController < ApplicationController
   def show
     @message = Message.new
     @location =  Location.find(params[:id])
-    @x = Location.find(@location.id).id
-    sql = "select * from messages WHERE location_id = #{@x}"
-    @messages = ActiveRecord::Base.connection.execute(sql).values
+    @profil = current_user.profil
+    @messages = Message.all.where('sender_id=? OR recipient_id=?', @profil.id, @profil.id)
   end
 
   def destroy
