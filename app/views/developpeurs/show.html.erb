@@ -72,37 +72,30 @@
 
 
 
-<%= content_for(:js) do %>
+<%= content_for(:after_js) do %>
   <script type="text/javascript">
     console.log('coucou');
     var profilPrice = document.getElementById('dev-price');
-var putPrice = document.getElementById('pricer');
+var putPrice = document.getElementById('dev-price');
 
 var profilCheckin = document.getElementById('dev-check_in');
 var profilCheckout = document.getElementById('dev-check_out');
 
-const devPrice = document.getElementById('dev-price-dev').value
+let testPrice = document.getElementById('dev-price-dev').value
+console.log('coucou 2');
 
-document.addEventListener("DOMContentLoaded", function() {
+  console.log('coucou 3');
 profilCheckout.addEventListener('change', function() {
   var mydatein = new Date(profilCheckin.value);
   var mydateout = new Date(profilCheckout.value);
   var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
   var diffDays = Math.round(Math.abs((mydateout.getTime() - mydatein.getTime())/(oneDay)));
-  profilPrice.innerText = "Total price: " + (diffDays * devPrice) + "€"
-  putPrice.value = (diffDays * devPrice)
+  profilPrice.innerText = "Total price: " + (diffDays * testPrice) + "€"
+  putPrice.value = (diffDays * testPrice)
 
-});
 });
   </script>
-<% end %>
-
-
-
-
-<% content_for(:js) do %>
-  <%= javascript_pack_tag 'showdev' %>
-  <%= javascript_tag do %>
+<%= javascript_tag do %>
     var handler = Gmaps.build('Google');
     handler.buildMap({ internal: { id: 'map' } }, function() {
       markers = handler.addMarkers(<%= raw @markers.to_json %>);
@@ -115,4 +108,8 @@ profilCheckout.addEventListener('change', function() {
       }
     });
   <% end %>
+
+
+
+
 <% end %>

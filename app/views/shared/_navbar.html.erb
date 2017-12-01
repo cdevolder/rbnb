@@ -13,8 +13,15 @@
           <div class="dropdown">
 <p onclick="myFunction()" class="dropbtn ">Developpeur</p>
   <div id="myDropdown" class="dropdown-content navbar-wagon-dropdown-menu dropdown-menu-right">
-    <%= link_to "Edit", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Recruteur.find(current_user.profil.recruteur.id))%>
-    <%= link_to "Contract", developpeur_locations_path(current_user.profil.developpeur)%>
+    <% if current_user.profil != nil && current_user.profil.developpeur != nil%>
+      <%= link_to "Edit", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Developpeur.find(current_user.profil.developpeur.id))%>
+          <%= link_to "Contract", developpeur_locations_path(current_user.profil.developpeur)%>
+
+    <% elsif current_user.profil != nil &&  current_user.profil.developpeur == nil%>
+      <%= link_to "new dev",new_profil_developpeur_path(Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%else%>
+      <%= link_to "dev", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end%>
   </div>
 </div>
 
@@ -31,7 +38,6 @@
         <%= link_to "Recruteur", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
 
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
