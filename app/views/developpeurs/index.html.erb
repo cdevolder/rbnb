@@ -9,12 +9,10 @@
             <div class="card-back"></div>
             <%= link_to '', developpeur_path(developpeur), :class => "card-link" %>
             <div class="card-description">
-              <h2><%= developpeur.price%>€</h2>
+              <p><%= developpeur.address%></p>
             </div>
             <div class="card-user-index">
-              <% rand(0..5).times do %>
-                <i class="fa fa-star" style="color:gold" aria-hidden="true"></i>
-              <% end %>
+              <p><%= developpeur.price%>€</p>
             </div>
 
           </div>

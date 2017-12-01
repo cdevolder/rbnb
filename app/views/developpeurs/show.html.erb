@@ -55,9 +55,9 @@
                 </div>
                 <div class="message-body">
                   <p><strong><%= review[1] %></strong></p>
-                  <p>
-                    rate : <%= review[2] %>
-                  </p>
+                  <% review[2].to_i.times do %>
+                    <i class="fa fa-star" style="color:gold" aria-hidden="true"></i>
+                  <% end %>
                 </div>
               </div>
               <br>

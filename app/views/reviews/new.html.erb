@@ -2,7 +2,7 @@
 <p>Find me in app/views/reviews/new.html.erb</p>
 <%= simple_form_for [@location, @review] do |f| %>
   <%= f.input :description %>
-  <%= f.input :rating %>
+  <%= f.input :rating, collection: 0..5, prompt: "Add rating" %>
   <%= f.hidden_field :sender_id, :value => @location.recruteur.profil_id %>
   <%= f.hidden_field :recipient_id, :value => @location.developpeur.profil_id %>
 
