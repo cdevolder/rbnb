@@ -6,7 +6,7 @@ tmp/*
 .DS_Store
 public/assets
 .byebug_history
-
+yarn-error.log
 # Ignore application configuration
 /config/application.yml
 /public/packs
