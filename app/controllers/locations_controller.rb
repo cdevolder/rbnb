@@ -7,6 +7,11 @@ class LocationsController < ApplicationController
     @developpeur = Developpeur.find(params[:developpeur_id])
   end
 
+  def index
+    @x =current_user.profil.developpeur.id
+    sql = "select * from locations WHERE developpeur_id = #{@x}"
+    @locations = ActiveRecord::Base.connection.execute(sql).values
+  end
 
   def create
     @developpeur = Developpeur.find(params[:developpeur_id])

@@ -1,0 +1,32 @@
+
+
+<div class="container-dev-review">
+  <div class="container-dev-content">
+    <h2 class="text-center">LOCATIONS</h2>
+    <% @locations.each do |location|%>
+      <div class="message">
+
+        <%= cl_image_tag Recruteur.find(location[4]).profil.photo,crop: :fill, class: "avatar-large" %>
+        <div class="message-name">
+
+          <h3><%=Recruteur.find(location[4]).profil.name%></h3>
+          <p><%= location[1]%></p>
+        </div>
+        <div class="message-body">
+                    <%= link_to '', location_path(Location.find(location[0])), :class => "card-link" %>
+
+          <p><strong>Description de <%= Recruteur.find(location[4]).profil.name%></strong></p>
+          <p>
+            <%=Recruteur.find(location[4]).description%>
+          </p>
+        </div>
+        <div class="message-status">
+    <p class="status pending">Pending</p>
+    <p class="price"><%= location[-1]%> €</p>
+  </div>
+      </div>
+      <br>
+
+    <% end %>
+  </div>
+</div>

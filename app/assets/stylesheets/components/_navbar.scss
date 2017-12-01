@@ -110,7 +110,7 @@
 
 .dropbtn {
   font-size: 14px;
-    color: pink;
+    color: #616668;
     cursor: pointer;
     margin-bottom: 0px;
 
@@ -137,6 +137,9 @@
     font-size: 15px !important;
     line-height: 22px !important;
     padding: 10px 20px;
+    border-left: 1px solid #E6E6E6;
+  border-top: 1px solid #E6E6E6;
+
 }
 
 .dropdown-content a {
