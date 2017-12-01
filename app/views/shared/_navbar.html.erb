@@ -14,20 +14,13 @@
 <p onclick="myFunction()" class="dropbtn ">Developpeur</p>
   <div id="myDropdown" class="dropdown-content">
     <%= link_to "Edit", developpeurs_path%>
-    <a href="#All my Location">About</a>
+    <a href="#All my Location">Contract</a>
   </div>
 </div>
 
       </div>
 
       <!-- Links when logged in -->
-      <% if current_user.profil != nil && current_user.profil.developpeur == nil %>
-        <%= link_to "Developpeur",new_profil_developpeur_path(Profil.find(current_user.profil.id)), class: "navbar-wagon-item navbar-wagon-link" %>
-      <% elsif current_user.profil != nil && current_user.profil.developpeur != nil%>
-        <%= link_to "Developpeur", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Developpeur.find(current_user.profil.developpeur.id)), class: "navbar-wagon-item navbar-wagon-link" %>
-      <% else %>
-        <%= link_to "Developpeur", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <% end %>
 
 
       <% if current_user.profil != nil && current_user.profil.recruteur == nil %>
