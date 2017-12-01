@@ -8,6 +8,17 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
+          <div class="navbar-wagon-item">
+
+          <div class="dropdown">
+<p onclick="myFunction()" class="dropbtn">Developpeur</p>
+  <div id="myDropdown" class="dropdown-content">
+    <%= link_to "Edit", developpeurs_path%>
+    <a href="#All my Location">About</a>
+  </div>
+</div>
+
+      </div>
 
       <!-- Links when logged in -->
       <% if current_user.profil != nil && current_user.profil.developpeur == nil %>
@@ -81,7 +92,12 @@
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login | Sign up"), new_user_session_path, class: "navbar-btn-login" %>
     <% end %>
+
   </div>
+
+
+
+
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
@@ -95,4 +111,26 @@
     </div>
   </div>
 </div>
+
+<script>
+
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 

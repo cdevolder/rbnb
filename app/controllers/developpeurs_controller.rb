@@ -5,7 +5,7 @@ class DeveloppeursController < ApplicationController
     @developpeur.profil = @profil
     @developpeur.save
     if @developpeur.save
-      redirect_to profil_developpeur_path(@profil, @developpeur)
+      redirect_to profil_path(@profil)
     else
       render :new
     end
@@ -35,7 +35,7 @@ class DeveloppeursController < ApplicationController
     @developpeur = Developpeur.find(current_user.profil.developpeur.id)
     @developpeur.update(developpeur_params)
 
-    redirect_to profil_developpeur_path(@profil, @developpeur)
+    redirect_to profil_path(@profil)
   end
 
 

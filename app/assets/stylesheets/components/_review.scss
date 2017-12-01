@@ -3,6 +3,12 @@
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
+  position: relative;
+
+}
+
+.message:hover {
+  opacity: 0.9;
 }
 .message:last-child {
   border-bottom: none;
@@ -52,4 +58,10 @@
 }
 .status.pending {
   color: lightgrey;
+}
+
+.align-btn-review{
+  display:flex;
+  justify-content: flex-end;
+  margin-right: 20px;
 }
