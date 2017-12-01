@@ -12,9 +12,9 @@
 
           <div class="dropdown">
 <p onclick="myFunction()" class="dropbtn ">Developpeur</p>
-  <div id="myDropdown" class="dropdown-content">
-    <%= link_to "Edit", developpeurs_path%>
-    <a href="#All my Location">Contract</a>
+  <div id="myDropdown" class="dropdown-content navbar-wagon-dropdown-menu dropdown-menu-right">
+    <%= link_to "Edit", edit_profil_developpeur_path(Profil.find(current_user.profil.id), Recruteur.find(current_user.profil.recruteur.id))%>
+    <%= link_to "Contract", developpeur_locations_path(current_user.profil.developpeur)%>
   </div>
 </div>
 

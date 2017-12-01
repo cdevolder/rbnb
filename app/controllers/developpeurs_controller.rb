@@ -62,4 +62,8 @@ class DeveloppeursController < ApplicationController
    def developpeur_params
     params.require(:developpeur).permit(:description, :available ,:profil_id, :price, :address, :city)
   end
+
+  def devloc
+
+  end
 end

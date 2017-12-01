@@ -29,7 +29,7 @@
           <%= f.hidden_field :status, :value => "pending" %>
           <%= f.hidden_field :developpeur, :value => @developpeur.id %>
           <%= f.hidden_field :developpeurprice, :value => @developpeur.price , id: "dev-price-dev" %>
-          <%= f.input :price, :value => 0, input_html: {id: "pricer"}%>
+          <%= f.hidden_field :price, :value => 0, input_html: {id: "pricer"}%>
 
           <%= f.submit "Create Location", class: "form-button" %>
 
