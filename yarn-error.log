@@ -1,14 +1,14 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.3.2/libexec/bin/yarn.js check --integrity
+  /usr/local/Cellar/node/8.9.1/bin/node /usr/local/Cellar/yarn/1.3.2/libexec/bin/yarn.js check --integrity
 
 PATH: 
-  /Users/HUGO/.rbenv/versions/2.3.5/lib/ruby/gems/2.3.0/bin:/Users/HUGO/.rbenv/versions/2.3.5/bin:/usr/local/Cellar/rbenv/1.1.1/libexec:./bin:./node_modules/.bin:/Users/HUGO/.rbenv/shims:/Users/HUGO/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/sbin
+  /Users/dibonalexandre/.rbenv/versions/2.3.5/lib/ruby/gems/2.3.0/bin:/Users/dibonalexandre/.rbenv/versions/2.3.5/bin:/usr/local/Cellar/rbenv/1.1.1/libexec:./bin:./node_modules/.bin:/Users/dibonalexandre/.rbenv/shims:/Users/dibonalexandre/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin
 
 Yarn version: 
   1.3.2
 
 Node version: 
-  6.9.2
+  8.9.1
 
 Platform: 
   darwin x64
@@ -5558,6 +5558,7 @@ Trace:
   ReferenceError: Unknown language key integrityNodeDoesntMatch
       at ConsoleReporter.lang (/usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:33004:13)
       at /usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:57471:30
-      at next (native)
+      at Generator.next (<anonymous>)
       at step (/usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:92:30)
       at /usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:103:13
+      at <anonymous>

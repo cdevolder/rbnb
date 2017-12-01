@@ -1,0 +1,8 @@
+const newMessageForm = document.getElementById('message_content');
+<% if @message.errors.any? %>
+  newMessageForm.innerHTML = "<%= j render 'shared/newmessage', location: @location, message: @message %>";
+<% else %>
+  const messages = document.getElementById('messages');
+  messages.insertAdjacentHTML("beforeend", "<%= j render 'show', msg: @message %>");
+  newMessageForm.innerHTML = "<%= j render 'shared/newmessage', location: @location, message: Message.new %>";
+<% end %>

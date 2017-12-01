@@ -1,0 +1,21 @@
+<div class= "card-edit-show">
+  <div class="desc-create-location">
+    <div class="container-message-form">
+      <%= simple_form_for([location, message], remote: true) do |f| %>
+        <h6 class="text-center">Create a new Message</h6>
+        <br>
+        <div class="align-date">
+          <%= f.input :content %>
+        </div>
+        <br>
+        <%= f.hidden_field :sender_id, :value => current_user.profil.id %>
+        <% if location.developpeur.profil_id != current_user.profil.id %>
+          <%= f.hidden_field :recipient_id, :value => location.developpeur.profil_id %>
+        <% else %>
+          <%= f.hidden_field :recipient_id, :value => location.recruteur.profil_id %>
+        <% end %>
+        <%= f.submit "Create Message", class: "form-button" %>
+      <% end %>
+    </div>
+  </div>
+</div>

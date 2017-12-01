@@ -3,8 +3,6 @@
 <h1 class="text-center"> Location n° <%= @location.id %> </h1>
 <div class="align-btn-review">
   <%= button_to "Add a Review", new_location_review_path(@location), :method => :get, :class => "btn btn-primary" %>
-
-
 </div>
   <br>
   <div class = "row">
@@ -17,27 +15,7 @@
           <p><strong> Recruteur: </strong><%= @location.recruteur.profil.name %></p>
           <p><strong> Status: </strong><%= @location.status %></p>
         </div>
-        <div class= "card-edit-show">
-          <div class="desc-create-location">
-            <div class="container-message-form">
-              <%= simple_form_for [@location, @message] do |f| %>
-                <h6 class="text-center">Create a new Message</h6>
-                <br>
-                <div class="align-date">
-                  <%= f.input :content %>
-                </div>
-                <br>
-                <%= f.hidden_field :sender_id, :value => current_user.profil.id %>
-                <% if @location.developpeur.profil_id != current_user.profil.id %>
-                  <%= f.hidden_field :recipient_id, :value => @location.developpeur.profil_id %>
-                <% else %>
-                  <%= f.hidden_field :recipient_id, :value => @location.recruteur.profil_id %>
-                <% end %>
-                <%= f.submit "Create Message", class: "form-button" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
+        <%= render 'shared/newmessage', location: @location, message: @message %>
       </div>
     </div>
     <div class = "col-md-4">
@@ -59,20 +37,13 @@
   <div class="row">
     <div class="col-md-12">
       <div class="container-message-content">
-            <% @messages.each do |message|%>
-              <div class="message">
-                <div class="message-name">
-                 <%= message.sender.name %>
-                </div>
-                <div class="message-body">
-                  <%= message.content %>
-                </div>
-                <div class="message-body">
-                  <%= message.created_at %>
-                </div>
-              </div>
-              <br>
-            <% end %>
+            <% if !@messages.blank? %>
+              <div id="messages">
+                <% @messages.each do |msg|%>
+                  <%= render 'messages/show', msg: msg %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
     </div>
   </div>
