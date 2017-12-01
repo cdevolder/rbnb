@@ -10,7 +10,16 @@ class LocationsController < ApplicationController
 
   def create
     @developpeur = Developpeur.find(params[:developpeur_id])
-    @recruteur = Recruteur.find(current_user.profil.recruteur.id)
+
+    if current_user == nil
+      @recruteur = nil
+       redirect_to root_path
+       return
+    else
+      @recruteur = Recruteur.find(current_user.profil.recruteur.id)
+
+    end
+
     # @recruteur = Recruteur.find(current_user.profil.id)
     @location = Location.new(location_params)
     @location.developpeur = @developpeur

@@ -19,18 +19,23 @@
         </div>
       </div>
     </div>
+<% if @fixbugrecruteur != nil %>
     <div class = "col-md-8">
 <div class="container-dev-review">
   <div class="container-dev-content">
     <h2 class="text-center">LOCATIONS</h2>
     <% @locations.each do |location|%>
       <div class="message">
+
         <%= cl_image_tag Developpeur.find(location[-4]).profil.photo,crop: :fill, class: "avatar-large" %>
         <div class="message-name">
+
           <h3><%=Developpeur.find(location[-4]).profil.name%></h3>
           <p><%= location[1]%></p>
         </div>
         <div class="message-body">
+                    <%= link_to '', location_path(Location.find(location[0])), :class => "card-link" %>
+
           <p><strong>Description de <%= Developpeur.find(location[-4]).profil.name%></strong></p>
           <p>
             <%=Developpeur.find(location[-4]).description%>
@@ -47,5 +52,6 @@
   </div>
 </div>
     </div>
+    <% end %>
   </div>
 

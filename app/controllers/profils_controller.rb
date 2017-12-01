@@ -17,9 +17,13 @@ class ProfilsController < ApplicationController
 
   def show
     @profil = Profil.find(params[:id])
-    @x = Profil.find(params[:id]).recruteur.id
-    sql = "select * from locations WHERE recruteur_id = #{@x}"
-    @locations = ActiveRecord::Base.connection.execute(sql).values
+    @fixbugrecruteur = Profil.find(params[:id]).recruteur
+    if (@fixbugrecruteur != nil)
+      @x = Profil.find(params[:id]).recruteur.id
+      sql = "select * from locations WHERE recruteur_id = #{@x}"
+      @locations = ActiveRecord::Base.connection.execute(sql).values
+    end
+
   end
 
   def edit
