@@ -4,8 +4,13 @@
 //= require turbolinks
 //= require underscore
 //= require gmaps/google
-//= require jquery.geocomplete
 //= require_tree .
+//= require geocomplete
+//= require jquery.geocomplete
+
+
+
+
 
 
 $(function() {

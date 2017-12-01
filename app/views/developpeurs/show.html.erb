@@ -82,6 +82,7 @@
 
   <div id="map"></div>
 <% content_for(:js) do %>
+  <%= javascript_pack_tag 'showdev' %>
   <%= javascript_tag do %>
     var handler = Gmaps.build('Google');
     handler.buildMap({ internal: { id: 'map' } }, function() {
