@@ -5,7 +5,6 @@
 //= require underscore
 //= require gmaps/google
 //= require geocomplete
-//= require jquery.geocomplete
 //= require_tree .
 
 
