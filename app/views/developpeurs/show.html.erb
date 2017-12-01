@@ -1,6 +1,6 @@
 <div class="grid">
   <div class="desc-developpeur">
-    <div class="container-presentation">
+    <div class="container-presentation" style="padding:15px;">
       <%= cl_image_tag (Profil.find(@developpeur.profil_id)).photo, height: 200, width: 200, crop: :fill, class: "img-cust photo-dev" %>
       <div class="text-container">
         <p class="text-center"> <strong> <%= @developpeur.profil.name.upcase %> </strong></p>
@@ -9,11 +9,10 @@
         <p><strong>Available: </strong> <%= @developpeur.available %> </p>
         <p><strong>Price: </strong> <%= @developpeur.price %> €/day</p>
       </div>
-
     </div>
   </div>
   <div class="desc-create-location">
-    <div class="container-presentation">
+    <div class="container-presentation" style="padding:15px;">
       <%= simple_form_for [@developpeur,@location] do |f| %>
 
           <h3 class="text-center">Create a new location</h3>
@@ -32,43 +31,41 @@
           <%= f.input :price, :value => 0, input_html: {id: "pricer"}%>
 
           <%= f.submit "Create Location", class: "form-button" %>
-
-        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-  </div>
+    <div id="map" style="height: 200px; width: 100%;"></div>
+
+<div class="grid">
   <div class="desc-reviews-dev">
     <div class="container-dev">
-
-  <div class="row">
-
-      <div class="col-md-12">
-
-        <div class="container-dev-review">
-          <div class="container-dev-content">
-            <% @reviews.each_with_index do |review, ind|%>
-              <div class="message">
-                <%= cl_image_tag (Profil.find(review[-2])).photo,crop: :fill, class: "avatar-large" %>
-                <div class="message-name">
-                  <h3><%=Profil.find(review[-2]).name%></h3>
-                  <p>10/07/17</p>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="container-dev-review">
+            <div class="container-dev-content">
+              <% @reviews.each_with_index do |review, ind|%>
+                <div class="message">
+                  <%= cl_image_tag (Profil.find(review[-2])).photo,crop: :fill, class: "avatar-large" %>
+                  <div class="message-name">
+                    <h3><%=Profil.find(review[-2]).name%></h3>
+                    <p><%=Profil.find(review[-2]).created_at%></p>
+                  </div>
+                  <div class="message-body">
+                    <p><strong><%= review[1] %></strong></p>
+                    <% review[2].to_i.times do %>
+                      <i class="fa fa-star" style="color:gold" aria-hidden="true"></i>
+                    <% end %>
+                  </div>
                 </div>
-                <div class="message-body">
-                  <p><strong><%= review[1] %></strong></p>
-                  <% review[2].to_i.times do %>
-                    <i class="fa fa-star" style="color:gold" aria-hidden="true"></i>
-                  <% end %>
-                </div>
-              </div>
-              <br>
-
-            <% end %>
+                <br>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-  </div>
-
-</div>
+    </div>
   </div>
 </div>
 
@@ -103,8 +100,6 @@ profilCheckout.addEventListener('change', function() {
 
 
 
-
-  <div id="map"></div>
 <% content_for(:js) do %>
   <%= javascript_pack_tag 'showdev' %>
   <%= javascript_tag do %>
