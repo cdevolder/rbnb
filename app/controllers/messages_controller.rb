@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
   end
 
   def create
+    fail
     @location = Location.find(params[:location_id])
     @message = Message.new(message_params)
     @message.location_id = @location.id
